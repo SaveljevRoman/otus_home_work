@@ -9,5 +9,4 @@ func main() {
 	str := "Hello, OTUS!"
 	rStr := reverse.String(str)
 	fmt.Print(rStr)
-	// Place your code here.
 }
