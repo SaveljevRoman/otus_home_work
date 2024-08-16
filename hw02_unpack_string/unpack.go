@@ -18,26 +18,28 @@ func Unpack(strIn string) (string, error) {
 		return "", ErrInvalidString
 	}
 
-	if !isValidStringNums(strIn) {
+	if !isValidString(strIn) {
 		return "", ErrInvalidString
 	}
 
 	var builder strings.Builder
-	// todo
+
 	return builder.String(), nil
 }
 
-func isValidStringNums(str string) bool {
+func isValidString(str string) bool {
 	strLen := len(str) - 1
 	for i := range str {
-		_, err := strconv.Atoi(string(str[i]))
-		if err != nil {
+		if _, err := strconv.Atoi(string(str[i])); err != nil {
 			continue
 		}
 
+		if i == 0 {
+			return false
+		}
+
 		if strLen > i {
-			_, err = strconv.Atoi(string(str[i+1]))
-			if err != nil {
+			if _, err := strconv.Atoi(string(str[i+1])); err != nil {
 				continue
 			}
 			return false
