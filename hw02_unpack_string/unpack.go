@@ -18,8 +18,8 @@ func Unpack(strIn string) (string, error) {
 		return "", ErrInvalidString
 	}
 
-	if err := validStringNums(strIn); err != nil {
-		return "", err
+	if !isValidStringNums(strIn) {
+		return "", ErrInvalidString
 	}
 
 	var builder strings.Builder
@@ -27,7 +27,7 @@ func Unpack(strIn string) (string, error) {
 	return builder.String(), nil
 }
 
-func validStringNums(str string) error {
+func isValidStringNums(str string) bool {
 	strLen := len(str) - 1
 	for i := range str {
 		_, err := strconv.Atoi(string(str[i]))
@@ -40,9 +40,9 @@ func validStringNums(str string) error {
 			if err != nil {
 				continue
 			}
-			return ErrInvalidString
+			return false
 		}
 	}
 
-	return nil
+	return true
 }
