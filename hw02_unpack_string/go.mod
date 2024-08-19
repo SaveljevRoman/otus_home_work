@@ -1,4 +1,4 @@
-module github.com/SaveljevRoman/otus_home_work
+module github.com/SaveljevRoman/otus_home_work/hw02_hello_otus
 
 go 1.22
 
