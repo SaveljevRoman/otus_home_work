@@ -23,6 +23,29 @@ func Unpack(strIn string) (string, error) {
 	}
 
 	var builder strings.Builder
+	for i, r := range strIn {
+		ch := string(r)
+		num, err := strconv.Atoi(ch)
+
+		if err != nil {
+			builder.WriteString(ch)
+			continue
+		}
+
+		if num > 0 {
+			builder.WriteString(
+				strings.Repeat(string(strIn[i-1]), num-1),
+			)
+			continue
+		}
+
+		if num == 0 {
+			newStr := builder.String()[:builder.Len()-1]
+			builder.Reset()
+			builder.WriteString(newStr)
+			continue
+		}
+	}
 
 	return builder.String(), nil
 }
