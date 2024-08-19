@@ -13,11 +13,6 @@ func Unpack(strIn string) (string, error) {
 		return "", nil
 	}
 
-	firstChar := string(strIn[0])
-	if _, err := strconv.Atoi(firstChar); err == nil {
-		return "", ErrInvalidString
-	}
-
 	if !isValidString(strIn) {
 		return "", ErrInvalidString
 	}
