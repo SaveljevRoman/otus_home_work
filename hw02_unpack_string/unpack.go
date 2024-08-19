@@ -26,7 +26,6 @@ func Unpack(strIn string) (string, error) {
 	for i, r := range strIn {
 		ch := string(r)
 		num, err := strconv.Atoi(ch)
-
 		if err != nil {
 			builder.WriteString(ch)
 			continue
