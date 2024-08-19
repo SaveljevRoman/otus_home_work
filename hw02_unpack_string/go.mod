@@ -1,4 +1,4 @@
-module github.com/SaveljevRoman/otus_home_work/hw02_hello_otus
+module github.com/SaveljevRoman/otus_home_work/hw02_unpack_string
 
 go 1.22
 
