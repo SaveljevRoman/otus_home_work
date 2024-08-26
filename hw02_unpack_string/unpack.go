@@ -43,7 +43,7 @@ func Unpack(strIn string) (string, error) {
 }
 
 func isValidString(str string) bool {
-	if ok, err := regexp.MatchString("^\\w+$", str); err != nil || !ok {
+	if ok, err := regexp.MatchString("^[A-z][A-z\\d]*$", str); err != nil || !ok {
 		return false
 	}
 
