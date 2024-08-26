@@ -2,6 +2,7 @@ package hw02unpackstring
 
 import (
 	"errors"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -42,6 +43,10 @@ func Unpack(strIn string) (string, error) {
 }
 
 func isValidString(str string) bool {
+	if ok, err := regexp.MatchString("^\\w+$", str); err != nil || !ok {
+		return false
+	}
+
 	for i := range str {
 		curChar := string(str[i])
 		_, err := strconv.Atoi(curChar)
