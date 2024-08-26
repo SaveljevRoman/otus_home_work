@@ -43,15 +43,18 @@ func Unpack(strIn string) (string, error) {
 
 func isValidString(str string) bool {
 	for i := range str {
-		if _, err := strconv.Atoi(string(str[i])); err == nil && i == 0 {
+		curChar := string(str[i])
+		_, err := strconv.Atoi(curChar)
+		if err == nil && i == 0 {
 			return false
 		}
 
-		if len(str)-1 > i {
-			if _, err := strconv.Atoi(string(str[i+1])); err != nil {
-				continue
+		var nextChar string
+		if i+1 < len(str) {
+			nextChar = string(str[i+1])
+			if _, err2 := strconv.Atoi(nextChar); err == nil && err2 == nil {
+				return false
 			}
-			return false
 		}
 	}
 
