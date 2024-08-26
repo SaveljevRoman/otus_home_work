@@ -47,20 +47,8 @@ func isValidString(str string) bool {
 		return false
 	}
 
-	for i := range str {
-		curChar := string(str[i])
-		_, err := strconv.Atoi(curChar)
-		if err == nil && i == 0 {
-			return false
-		}
-
-		var nextChar string
-		if i+1 < len(str) {
-			nextChar = string(str[i+1])
-			if _, err2 := strconv.Atoi(nextChar); err == nil && err2 == nil {
-				return false
-			}
-		}
+	if ok, err := regexp.MatchString("\\d{2,}", str); err != nil || ok {
+		return false
 	}
 
 	return true
