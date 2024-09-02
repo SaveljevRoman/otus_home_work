@@ -53,7 +53,6 @@ func isValidString(str string) bool {
 				return false
 			}
 		}
-
 	}
 
 	return true
