@@ -2,7 +2,6 @@ package hw02unpackstring
 
 import (
 	"errors"
-	"regexp"
 	"strconv"
 	"strings"
 )
@@ -43,12 +42,19 @@ func Unpack(strIn string) (string, error) {
 }
 
 func isValidString(str string) bool {
-	if ok, err := regexp.MatchString("^[A-z][A-z\\d]*$", str); err != nil || !ok {
-		return false
-	}
+	for i, r := range str {
+		_, err := strconv.Atoi(string(r))
+		if err == nil && i == 0 {
+			return false
+		}
 
-	if ok, err := regexp.MatchString("\\d{2,}", str); err != nil || ok {
-		return false
+		if err == nil {
+			_, err := strconv.Atoi(string(str[i-1]))
+			if err == nil {
+				return false
+			}
+		}
+
 	}
 
 	return true
