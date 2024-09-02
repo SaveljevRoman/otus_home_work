@@ -49,8 +49,7 @@ func isValidString(str string) bool {
 		}
 
 		if err == nil {
-			_, err := strconv.Atoi(string(str[i-1]))
-			if err == nil {
+			if _, err := strconv.Atoi(string(str[i-1])); err == nil {
 				return false
 			}
 		}
